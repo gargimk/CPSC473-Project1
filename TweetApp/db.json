@@ -1,0 +1,61 @@
+{
+  "blog": [
+    {
+      "votes": 3,
+      "date": "4/4/16",
+      "text": "hello test tweet",
+      "postedOnTwitter": true,
+      "createdby": "user1",
+      "approvedBy": [
+        "user1",
+        "user2",
+        "admin"
+      ],
+      "id": 1
+    },
+    {
+      "votes": 2,
+      "date": "4/4/16",
+      "text": "hi from user2",
+      "postedOnTwitter": false,
+      "createdby": "user2",
+      "approvedBy": [
+        "user2",
+        "user1"
+      ],
+      "id": 2
+    },
+    {
+      "votes": 1,
+      "date": "4/4/16",
+      "text": "hey there..another test tweet",
+      "postedOnTwitter": false,
+      "createdby": "user1",
+      "approvedBy": [
+        "user1"
+      ],
+      "id": 3
+    }
+  ],
+  "users": [
+    {
+      "id": "admin",
+      "password": "admin"
+    },
+    {
+      "id": "user1",
+      "password": "user1"
+    },
+    {
+      "id": "user2",
+      "password": "user2"
+    }
+  ],
+  "session": [
+    {
+      "user": "temp",
+      "isactive": false,
+      "id": 1
+    }
+  ]
+}

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Community Twitter Gateway</title>
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <!--including required JS and CSS file-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/tweetApp.css" rel="stylesheet">
+
+    <script src="js/jquery-1.12.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/tweetApp.js"></script>
+</head>
+
+<body>
+    <!--header banner-->
+    <header class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            <nav class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+
+                    <li>
+                        <h2><label class="tweetApp">TweetApp</label></h2>
+                    </li>
+                    
+                </ul>
+                <ul class="nav navbar-right navbar-nav">     
+                    <li>
+                        <a onclick="aboutTweetApp()">About</a>
+                    </li>
+                    <li>
+                        <a class="signupButton" onclick="signup()">SignUp</a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+<!--
+    Sign in page for user authentication  
+-->
+    <div class="signin">
+        <div class="container" style="max-height: 90vh;">
+            <div class="row">
+                <div class="col-md-4 col-md-push-9">
+                    <div id="sidebar">
+                        <form id="f1" class="form-signin">
+                            <h2 id="hd" class="form-signin-heading">Sign in</h2>
+                            <input type="text" id="inputEmail" class="form-control inputField" placeholder="Username" required autofocus>
+                            <br />
+                            <input type="password" id="inputPassword" class="form-control inputField" placeholder="Password" required>
+                            <br />
+                            <button class="btn btn-lg btn-primary btn-block" id="Signin" type="submit" onclick="login()">Sign in</button>
+                            <div id="link">
+                                <a id="crtLink" onclick="signup()">New User Signup!</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--
+    Dashboard for users to post the tweets and vote for tweets from other users 
+-->
+    <div class="dashboard">
+        <div class="container-fluid content">
+            <div class="row">
+                <div class="col-md-12">
+                    <form id="tweetForm">
+                        <!--text area to post the tweet-->
+                        <div id="dForm">
+                            <h2>Lets Tweet!!</h2>
+                            <label class="currentUser text-capitalize text-primary"></label>
+                            <textarea class="form-control tweet" rows="4"></textarea>
+                        </div>
+                        <!--character length validator-->
+                        <span id="count">140</span>
+                         <!-- button to post the tweet-->
+                        <button class="btn btn-lg btn-primary btn-block tweetPost" id="tweet" type="submit">Post</button>
+                </form>
+                <hr/>
+            </div>
+            <div class="col-md-6">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <!--recent tweet area to dipaly all the posted tweets-->
+                <div class="page-header">
+                    <h1>
+					Recent Tweets
+				</h1>
+                </div>
+                <div class="blogs" id="blogs"></div>
+            </div>
+            <div class="col-md-6">
+                <!--twitter account area to display the common account on which the tweets are posted-->
+                <div class="page-header">
+                    <h1>
+                            Twitter Account
+                    </h1>
+                </div>
+                <!--twitter widget-->
+                <div id="twitter">
+                    <a class="twitter-timeline" href="https://twitter.com/cpsc473_project" data-widget-id="712056994299924480">Tweets by @cpsc473_project</a>
+                    <script>
+                        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+<!--
+    Signup modal for new users registration
+-->
+    <div class="signup">
+        <div class="modal fade" id="signupModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header modal-header-primary">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Sign Up</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="f2" class="form-signin">
+                            <h2 id="hdSignup" class="form-signin-heading">Create your Account</h2>
+                            <input type="text" id="signupEmail" class="form-control" placeholder="Username" required>
+                            <br />
+                            <input type="password" id="signupPassword" class="form-control" placeholder="Password" required>
+                            <br />
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-lg btn-primary btn-block" id="Signup" type="submit" onclick="createUser()">Sign up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    Modal displaying informatoin about the application, developers and class
+-->
+    <div class="about">
+        <!--Modal -->
+        <div class="modal fade" id="aboutModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header modal-header-primary">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">About TweetApp</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="page-header">
+                                        <h1>About TweetApp</h1>
+                                    </div>
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading">
+                                            <h1 class="panel-title">Our Goals</h1>
+                                        </div>
+                                        <div class="panel-body">
+                                            <p> This website provides a group of users to post to Twitter using a single account.
+                                                On this website, users are able to submit a message to be potentially posted
+                                                to Twitter. This message is reviewed by the community and has to be approved
+                                                by a certain amount of votes. After this threshold is met, the message will
+                                                be posted on twitter via a registered account for the group.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">Team Members</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <p> Gargi Kulkarni
+                                                <br> Swapnil Gaidhankar
+                                                <br> Dhrumit Thakkar
+                                                <br> Freddy Aklobessi
+                                                <br> Jon Clay
+                                                <br>
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">Class</h3>
+
+                                        </div>
+                                        <div class="panel-body">
+                                            <p> Computer Science 473, Web Programming and Data Management
+                                                <br> California State University, Fullerton
+                                            </p>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<!--
+   Modal for warning or error alerts
+-->
+    <div class="alertModalDiv">
+        <div class="modal fade" id="alertModal" role="dialog">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header modal-header-warning">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title alertTitle"> </h4>
+                    </div>
+                    <div class="modal-body">
+                        <span class="modalMsg"></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

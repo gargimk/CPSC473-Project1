@@ -1,0 +1,39 @@
+.logo{
+    width:7em;
+    float:left;
+    margin-left: -3em;
+}
+.logo_image{
+    margin-left: 15.3em;
+    padding-top: 7.6em;
+}
+.title{
+    font-style: italic;
+    
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bolder;
+   display:block;
+    padding:1em 0 1em;  
+   padding-left: 1em;
+   font-weight: bold;
+   text-shadow: gold 0.1em 0.1em 0.2em;
+   color: goldenrod;  
+}
+.login_form{
+    padding-top: 8.5em;
+    padding-right: 4.7em;
+    margin-left: 5.2em;
+}
+
+a:hover{
+    color: goldenrod;
+}
+
+.tweetPost{
+    width: 8em;
+    margin-top: 1em;
+    color: white;
+}
+.content{
+    padding-top: 28px;
+}
